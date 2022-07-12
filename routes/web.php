@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Models\master_barang;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +25,13 @@ Route::get('/', function () {
 
 Route::get('/barang', function () {
     return view('barang', [
-        "title" => "Barang"
+        "barangs" => master_barang::all()
     ]);
 });
 
 Route::get('/transaksi', function () {
     return view('transaksi', [
-        "title" => "Transaksi"
+        "barangs" => master_barang::all()
     ]);
 });
 
@@ -42,4 +44,5 @@ Route::get('/daftar', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/barang', [App\Http\Controllers\BarangController::class, 'index'])->name('index');
+Route::get('/cariNamaBarang', [BarangController::class, 'cariNamaBarang']);
+Route::get('/cariHargaBarang', [BarangController::class, 'cariHargaBarang']);
