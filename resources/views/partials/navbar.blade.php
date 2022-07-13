@@ -16,19 +16,19 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item active">
-                <a class="nav-link" href="/barang">
+                <a class="nav-link" href="/product">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Barang</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="/transaksi">
+                <a class="nav-link" href="/transaction">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Transaksi</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="/daftar">
+                <a class="nav-link" href="/transaction-list">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Daftar Transaksi</span></a>
             </li>

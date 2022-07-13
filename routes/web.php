@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Models\master_barang;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,25 +18,23 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
+    return view('home');
+});
+
+Route::get('/product', function () {
+    return view('product', [
+        "products" => Product::all()
     ]);
 });
 
-Route::get('/barang', function () {
-    return view('barang', [
-        "barangs" => master_barang::all()
+Route::get('/transaction', function () {
+    return view('transaction', [
+        "products" => Product::all()
     ]);
 });
 
-Route::get('/transaksi', function () {
-    return view('transaksi', [
-        "barangs" => master_barang::all()
-    ]);
-});
-
-Route::get('/daftar', function () {
-    return view('daftar', [
+Route::get('/transaction-list', function () {
+    return view('transactionlist', [
         "title" => "Daftar Transaksi"
     ]);
 });
@@ -44,5 +42,7 @@ Route::get('/daftar', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cariNamaBarang', [BarangController::class, 'cariNamaBarang']);
-Route::get('/cariHargaBarang', [BarangController::class, 'cariHargaBarang']);
+Route::get('/findProductName', [ProductController::class, 'findProductName']);
+Route::get('/findProductPrice', [ProductController::class, 'findProductPrice']);
+Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cart', [ProductController::class, 'transaction'])->name('transaction');
